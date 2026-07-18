@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Dasar Komputer dan Sistem Operasi</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+    <!-- ================= LOADING SCREEN ================= -->
+
+    <div id="loading-screen">
+        <div class="loader-box">
+            <i class="fa-solid fa-computer loader-icon"></i>
+            <h1>Quiz Komputer</h1>
+            <p>Sedang Memuat...</p>
+        </div>
+    </div>
+
+
+    <!-- ================= HALAMAN AWAL ================= -->
+
+    <section class="start-section" id="startSection">
+
+        <div class="glass-card">
+
+            <i class="fa-solid fa-laptop-code title-icon"></i>
+
+            <h1>
+                Quiz Dasar Komputer dan Sistem Operasi
+            </h1>
+
+            <p>
+                Uji pemahamanmu mengenai komponen komputer,
+                sistem operasi, perangkat input dan output,
+                internet dasar, dan materi lainnya.
+            </p>
+
+            <div class="input-container">
+
+                <label>Nama Peserta</label>
+                <input type="text"
+                    id="namaPeserta"
+                    placeholder="Masukkan Nama">
+
+                <label>Kelas</label>
+                <input type="text"
+                    id="kelasPeserta"
+                    placeholder="Masukkan Kelas">
+
+            </div>
+
+
+            <!-- INFORMASI QUIZ -->
+
+            <div class="quiz-information">
+
+                <div class="info-card">
+                    <i class="fa-solid fa-list-check"></i>
+                    <h3>Jumlah Soal</h3>
+                    <p>25 Pilihan Ganda</p>
+                    <p>5 Essay</p>
+                </div>
+
+
+                <div class="info-card">
+                    <i class="fa-solid fa-clock"></i>
+                    <h3>Durasi</h3>
+                    <p>30 Menit</p>
+                </div>
+
+
+                <div class="info-card">
+                    <i class="fa-solid fa-star"></i>
+                    <h3>Level</h3>
+                    <p>Beginner</p>
+                </div>
+
+            </div>
+
+
+            <!-- JAM REAL TIME -->
+
+            <div class="realtime-clock">
+
+                <h3>Jam Saat Ini</h3>
+                <span id="clock"></span>
+
+            </div>
+
+
+            <button id="startQuizBtn">
+                <i class="fa-solid fa-play"></i>
+                Mulai Quiz
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= QUIZ SECTION ================= -->
+
+    <section class="quiz-section hidden" id="quizSection">
+
+
+        <!-- HEADER -->
+
+        <div class="quiz-header">
+
+            <div>
+                <h3 id="displayNama"></h3>
+                <h4 id="displayKelas"></h4>
+            </div>
+
+
+            <div class="timer-box">
+                <h3>Sisa Waktu</h3>
+                    <span id="timer">
+                        30:00
+                    </span>
+                        <p id="timerWarning"></p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROGRESS -->
+
+        <div class="progress-container">
+
+            <h3 id="progressText">
+                0/30 Soal Telah Dijawab
+            </h3>
+
+            <div class="progress-bar">
+
+                <div class="progress-fill"
+                    id="progressFill">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUESTION NAVIGATOR -->
+
+        <div class="navigator-container">
+
+            <h3>Navigator Soal</h3>
+
+            <div id="questionNavigator">
+
+            </div>
+
+        </div>
+
+
+        <!-- QUESTION CARD -->
+
+        <div class="question-card">
+
+            <h2 id="questionNumber">
+                Soal Nomor 1
+            </h2>
+
+            <div id="questionContainer">
+
+            </div>
+
+        </div>
+
+
+        <!-- BUTTON -->
+
+        <div class="navigation-buttons">
+
+            <button id="prevBtn">
+                Previous
+            </button>
+
+
+            <button id="nextBtn">
+                Next
+            </button>
+
+
+            <button id="submitBtn">
+                Submit Quiz
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= HASIL QUIZ ================= -->
+
+    <section class="result-section hidden"
+        id="resultSection">
+
+        <div class="glass-card">
+
+
+            <h1>
+                Hasil Quiz
+            </h1>
+
+            <div class="result-information">
+
+                <p id="hasilNama"></p>
+                <p id="hasilKelas"></p>
+
+                <p id="hasilNilai"></p>
+                <p id="hasilGrade"></p>
+                <p id="hasilAchievement"></p>
+                
+                <p id="hasilBenar"></p>
+
+                <p id="hasilSalah"></p>
+
+                <p id="hasilBelum"></p>
+
+                <p id="hasilWaktu"></p>
+
+            </div>
+
+
+            <div class="result-buttons">
+
+                <button id="reviewBtn">
+                    Lihat Jawaban Saya
+                </button>
+
+                <button id="downloadBtn">
+                    Download Jawaban (.txt)
+                </button>
+
+                <button id="retryBtn">
+                    Kerjakan Lagi
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= REVIEW SECTION ================= -->
+
+    <section class="review-section hidden"
+        id="reviewSection">
+
+        <div class="glass-card">
+
+            <h1>
+                Review Jawaban Saya
+            </h1>
+
+            <div id="reviewContainer">
+
+            </div>
+
+
+            <button id="backResultBtn">
+                Kembali
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- ================= LEADERBOARD ================= -->
+
+    <section class="leaderboard-section">
+
+        <div class="glass-card">
+
+            <h1>
+                Leaderboard
+            </h1>
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Rank</th>
+                        <th>Nama</th>
+                        <th>Kelas</th>
+                        <th>Nilai</th>
+                        <th>Waktu</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="leaderboardBody">
+
+                </tbody>
+
+            </table>
+
+
+            <button id="resetLeaderboardBtn">
+                Reset Leaderboard
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- ================= POPUP SUBMIT ================= -->
+
+    <div class="popup hidden"
+        id="submitPopup">
+
+        <div class="popup-card">
+
+            <h2>
+                Apakah Anda yakin ingin
+                mengumpulkan jawaban?
+            </h2>
+
+
+            <div class="popup-buttons">
+
+                <button id="yesSubmit">
+                    Ya
+                </button>
+
+
+                <button id="noSubmit">
+                    Tidak
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- ================= CONFETTI ================= -->
+
+    <canvas id="confettiCanvas">
+
+    </canvas>
+
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+    <footer class="footer">
+
+    <h3>Quiz Dasar Komputer dan Sistem Operasi</h3>
+
+        <p>
+            Developed by Giovanni Edi Saputra
+        </p>
+
+            <p>
+                © 2026 All Rights Reserved.
+            </p>
+
+</footer>
+
+</body>
+</html>
